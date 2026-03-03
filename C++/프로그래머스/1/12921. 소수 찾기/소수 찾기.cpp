@@ -1,0 +1,26 @@
+#include <vector>
+
+using namespace std;
+
+int solution(int n){
+    int ans = 0;
+    vector<bool> v(n+1, true);
+    v[0] = false;
+    v[1] = false;
+    
+    for(int i = 2; i * i <= n; i++){
+        if(v[i]){
+            for(int j = i * i; j <= n; j += i){
+                v[j] = false;
+            }
+        }
+    }
+    
+    for(int i = 2; i <= n; i++){
+        if(v[i]){
+            ans += 1;
+        }
+    }
+    
+    return ans;
+}
