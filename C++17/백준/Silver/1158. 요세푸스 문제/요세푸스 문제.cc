@@ -1,27 +1,31 @@
+#include <queue>
 #include <vector>
 #include <iostream>
+
 using namespace std;
+
 int main(){
     int n = 0;
     int k = 0;
     cin >> n >> k;
     
-    vector<bool> v(n, false);
-    vector<int> ans;
+    queue<int> q;
+    for(int i = 1; i <= n; i++){
+        q.push(i);
+    }
     
-    int idx = 0;
     int cnt = 0;
-    
-    while(ans.size() < n){
-        if(!v[idx]){
-            cnt++;
-            if(cnt == k){
-                v[idx] = true;
-                ans.push_back(idx+1);
-                cnt = 0;
-            }
+    vector<int> ans;
+    while(!q.empty()){
+        cnt++;
+        if(cnt == k){
+            ans.push_back(q.front());
+            cnt = 0;
+            q.pop();
+        }else{
+            q.push(q.front());
+            q.pop();
         }
-        idx = (idx + 1) % n;
     }
     cout << "<";
     for(int i = 0; i < n; i++){
@@ -30,6 +34,7 @@ int main(){
             cout << ", ";
         }
     }
+    
     cout << ">";
-        
+    
 }
