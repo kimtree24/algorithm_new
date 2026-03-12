@@ -11,7 +11,6 @@ int main(){
         cin >> tops[i];
     }
     
-    // 높이, 번호
     vector<pair<int, int>> st;
     
     for(int i = 0; i < n; i++){
