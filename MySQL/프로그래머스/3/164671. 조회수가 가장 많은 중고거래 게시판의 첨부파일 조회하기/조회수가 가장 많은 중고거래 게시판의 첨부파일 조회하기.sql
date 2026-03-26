@@ -1,0 +1,9 @@
+select concat('/home/grep/src/', f.board_id, '/', f.file_id, f.file_name, f.file_ext) as file_path
+from used_goods_file as f
+join (
+    select board_id
+    from used_goods_board
+    order by views desc
+    limit 1
+) as b on b.board_id = f.board_id
+order by f.file_id desc;
