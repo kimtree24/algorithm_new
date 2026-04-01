@@ -1,26 +1,17 @@
+#include <string>
 #include <vector>
+#include <numeric>
 
 using namespace std;
 
-long long gcd(long long a, long long b){
-    while (b != 0){
-        long long temp = a % b;
-        a = b;
-        b = temp;
-    }
+vector<int> solution(int n, int m) {
+    vector<int> answer;
     
-    return a;
-}
-
-long lcm(long a, long b){
-    return a / gcd(a, b) * b;
-}
-
-vector<int> solution(int n, int m){
-    vector<int> ans;
+    int gcd_num = gcd(n, m);
+    int lcm_num = lcm(n, m);
     
-    ans.push_back(gcd(n, m));
-    ans.push_back(lcm(n, m));
+    answer.push_back(gcd_num);
+    answer.push_back(lcm_num);
     
-    return ans;
+    return answer;
 }
