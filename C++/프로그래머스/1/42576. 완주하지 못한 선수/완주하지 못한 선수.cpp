@@ -5,19 +5,22 @@
 using namespace std;
 
 string solution(vector<string> participant, vector<string> completion) {
-    map<string, int> m;
     
-    for(string p:participant){
-        m[p] += 1;
+    map<string, int> mp;
+    
+    for(string pa : participant){
+        mp[pa] += 1;
     }
     
-    for(string c:completion){
-        m[c] -= 1;
+    for(string com : completion){
+        mp[com] -= 1;
     }
     
-    for(const auto &p:m){
-        if(p.second != 0){
+    for(auto &p : mp){
+        if(p.second > 0){
             return p.first;
         }
     }
+    
+    return "";
 }
